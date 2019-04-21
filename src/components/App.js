@@ -14,12 +14,17 @@ class App extends Component {
   }
 
   componentWillMount(){
+    this.daytime()
+    setInterval(this.daytime, 100000);
+  }
+
+  daytime = () => {
     var d = new Date();
-    if(d.getHours >= 5 && d.getHours <= 12){
+    if(d.getHours() >= 5 && d.getHours() <= 12){
       //morning
       this.setState({timeOfDay: 0})
     }
-    else if(d.getHours >= 12 && d.getHours <= 18){
+    else if(d.getHours() >= 12 && d.getHours() <= 18){
       //afternoon
       this.setState({timeOfDay: 1})
     }

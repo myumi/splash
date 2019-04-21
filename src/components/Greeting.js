@@ -7,21 +7,22 @@ class Greeting extends Component {
     message: '',
   }
   componentWillMount(){
+    this.greeting()
     setInterval(this.greeting, 20000)
   }
   greeting = () => {
     var d = new Date();
-    if(d.getHours >= 5 && d.getHours <= 12){
+    if(!this.props.timeOfDay){
       const messages = ["Good morning,"]
-      this.setState({})
+      this.setState({message: messages[0]})
     }
-    else if(d.getHours >= 12 && d.getHours <= 18){
+    else if(this.props.timeOfDay === 1){
       const messages = ["Good afternoon,"]
-      this.setState({})
+      this.setState({message: messages[0]})
     }
     else{
       const messages = ["Good evening,"]
-      this.setState({})
+      this.setState({message: messages[0]})
     }
   }
   render() {

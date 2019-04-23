@@ -8,10 +8,8 @@ class Greeting extends Component {
   }
   componentWillMount(){
     this.greeting()
-    setInterval(this.greeting, 20000)
   }
   greeting = () => {
-    var d = new Date();
     if(!this.props.timeOfDay){
       const messages = ["Good morning,"]
       this.setState({message: messages[0]})

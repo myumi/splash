@@ -3,26 +3,42 @@ import React, { Component } from "react";
 
 class Greeting extends Component {
   state = {
-    name: 'Myumi',
-    message: '',
-  }
-  componentWillMount(){
-    this.greeting()
-  }
-  greeting = () => {
-    if(!this.props.timeOfDay){
-      const messages = ["Good morning,"]
-      this.setState({message: messages[0]})
+    name: "Myumi",
+    message: "",
+    timeOfDay: "",
+    messages: {
+      0: ["Good morning,"],
+      1: ["Good afternoon,"],
+      2: ["Good evening,"]
     }
-    else if(this.props.timeOfDay === 1){
-      const messages = ["Good afternoon,"]
-      this.setState({message: messages[0]})
-    }
-    else{
-      const messages = ["Good evening,"]
-      this.setState({message: messages[0]})
+  };
+
+  componentDidMount() {
+    this.setState({
+      timeOfDay: this.props.timeOfDay,
+      message: this.state.messages[this.props.timeOfDay][
+        Math.floor(
+          Math.random() * this.state.messages[this.props.timeOfDay].length
+        )
+      ]
+    });
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.timeOfDay !== this.props.timeOfDay) {
+      this.setState({
+        timeOfDay: this.props.timeOfDay,
+        message: this.state.messages[
+          this.state.timeOfDay[
+            Math.floor(
+              Math.random() * this.state.messages[this.state.timeOfDay].length
+            )
+          ]
+        ]
+      });
     }
   }
+
   render() {
     return (
       <div>

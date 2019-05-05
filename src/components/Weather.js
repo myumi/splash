@@ -2,15 +2,15 @@ import React, { Component } from "react";
 //weather for day
 
 class Weather extends Component {
-  componentWillMount() {
-    this.weather();
-    setInterval(this.weather, 100000);
-  }
 
+  componentWillReceiveProps(){
+
+  }
+  
   render() {
     return (
       <div>
-
+        <span>{JSON.stringify(this.props.weather.temp)}</span>
       </div>
     );
   }

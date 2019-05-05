@@ -5,6 +5,7 @@ import Clock from "./Clock.js";
 import Day from "./Day.js";
 import Greeting from "./Greeting.js";
 import Weather from "./Weather.js";
+import Forecast from "./Forecast.js";
 
 //weather, todos
 //change background for day, afternoon, night?
@@ -13,7 +14,7 @@ class App extends Component {
   state = {
     background: "",
     timeOfDay: "",
-    weather: "",
+    weather: [],
     city: "Stanhope",
     country: "US-AS",
     key: process.env.REACT_APP_OPENWEATHERAPI
@@ -22,7 +23,7 @@ class App extends Component {
     this.weather();
     this.daytime();
 
-    setInterval(this.daytime, 100000);
+    setInterval(this.daytime, 10000);
     setInterval(this.weather, 3600000);
   }
   daytime = () => {
@@ -48,9 +49,10 @@ class App extends Component {
           APPID: this.state.key
         }
       })
-      .then(function(response) {
+      .then((response) => {
         // handle success
-        console.log(response);
+        this.setState({ weather: response.data.list })
+        console.log(this.state.weather)
       })
       .catch(function(error) {
         // handle error
@@ -64,6 +66,8 @@ class App extends Component {
         <Clock />
         <Greeting timeOfDay={this.state.timeOfDay} />
         <Day />
+        <Forecast weather={this.state.weather[0]}/>
+        <Weather weather={this.state.weather}/>
       </div>
     );
   }

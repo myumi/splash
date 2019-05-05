@@ -6,7 +6,11 @@ class Forecast extends Component {
   render() {
     return (
       <div>
-
+        <ForecastItem />
+        <ForecastItem />
+        <ForecastItem />
+        <ForecastItem />
+        <ForecastItem />
       </div>
     );
   }

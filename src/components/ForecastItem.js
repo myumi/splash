@@ -1,15 +1,10 @@
 import React, { Component } from "react";
-
+//props: key, day, weather
 class ForecastItem extends Component {
-  state = {
-    icon: '',
-    day: ''
-  };
-
   render() {
     return (
       <div>
-
+        {this.props.day} {this.props.weather.icon}
       </div>
     );
   }

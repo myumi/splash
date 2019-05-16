@@ -14,6 +14,8 @@ import Forecast from "./Forecast.js";
 class App extends Component {
   state = {
     background: "",
+    date: new Date(),
+    day: new Date().getDay(),
     timeOfDay: "",
     weatherIn: false,
     forecast: [
@@ -28,14 +30,38 @@ class App extends Component {
     key: process.env.REACT_APP_OPENWEATHERAPI
   };
   componentWillMount() {
+    this.clock();
     this.daytime();
     this.weather();
 
+    setInterval(this.clock, 1000);
     setInterval(this.daytime, 10000);
     setInterval(this.weather, 3600000);
   }
+  clock = () => {
+    this.setState({
+      date: new Date(),
+      day: new Date().getDay(),
+    });
+    var d = this.state.date,
+      hours = d.getHours();
+    if (hours > 12) hours -= 12;
+    this.setState({
+      time: {
+        hours: hours.toString().length < 2 ? "0" + hours : hours,
+        minutes:
+          d.getMinutes().toString().length < 2
+            ? "0" + d.getMinutes()
+            : d.getMinutes(),
+        seconds:
+          d.getSeconds().toString().length < 2
+            ? "0" + d.getSeconds()
+            : d.getSeconds()
+      }
+    });
+  };
   daytime = () => {
-    var d = new Date();
+    var d = this.state.date;
     if (d.getHours() >= 5 && d.getHours() <= 12) {
       //morning
       this.setState({ timeOfDay: 0 });
@@ -62,11 +88,12 @@ class App extends Component {
         this.setState({
           weatherIn: true,
           forecast: response.data.list.map(item => {
-            return {temp: item.temp.day,
-            weather: item.weather[0].icon,
-            humidity: item.humidity};
-          }
-        )
+            return {
+              temp: item.temp.day,
+              icon: item.weather[0].icon,
+              humidity: item.humidity
+            };
+          })
         });
       })
       .catch(function(error) {
@@ -79,19 +106,30 @@ class App extends Component {
     if (this.state.weatherIn) {
       return (
         <div>
-          <Clock />
+          <Clock
+            hours={this.state.time.hours}
+            minutes={this.state.time.minutes}
+            seconds={this.state.time.seconds}
+          />
           <Greeting timeOfDay={this.state.timeOfDay} />
-          <Day />
-          <Forecast fiveDay={this.state.forecast}/>
-          <Weather today={this.state.forecast[0]}/>
+          <Day date={this.state.date} />
+          <Forecast
+            weather={this.state.forecast}
+            today={this.state.day}
+          />
+          <Weather today={this.state.forecast[0]} />
         </div>
       );
     }
     return (
       <div>
-        <Clock />
+        <Clock
+          hours={this.state.time.hours}
+          minutes={this.state.time.minutes}
+          seconds={this.state.time.seconds}
+        />
         <Greeting timeOfDay={this.state.timeOfDay} />
-        <Day />
+        <Day date={this.state.date} />
         Loading Weather...
       </div>
     );

@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 //integrate facial recognition?
+//put state update logic in its own function
+
 class Greeting extends Component {
   state = {
     name: "Myumi",

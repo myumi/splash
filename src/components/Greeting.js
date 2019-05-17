@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 //integrate facial recognition?
-//put state update logic in its own function
-
+//put state update logic into its own function?
 class Greeting extends Component {
   state = {
-    name: "Myumi",
+    name: "X",
     message: "",
     timeOfDay: "",
     messages: {
@@ -13,7 +12,6 @@ class Greeting extends Component {
       2: ["Good evening,"]
     }
   };
-
   componentDidMount() {
     this.setState({
       timeOfDay: this.props.timeOfDay,
@@ -24,7 +22,6 @@ class Greeting extends Component {
       ]
     });
   }
-
   componentDidUpdate(prevProps) {
     if (prevProps.timeOfDay !== this.props.timeOfDay) {
       this.setState({
@@ -39,10 +36,9 @@ class Greeting extends Component {
       });
     }
   }
-
   render() {
     return (
-      <div>
+      <div className="greeting">
         {this.state.message} {this.state.name}
       </div>
     );

@@ -7,8 +7,6 @@ import Greeting from "./Greeting.js";
 import Weather from "./Weather.js";
 import Forecast from "./Forecast.js";
 
-//weather, todos
-//should probably have time processing done here
 //change background for day, afternoon, night?
 //rainy or not?
 class App extends Component {
@@ -31,13 +29,14 @@ class App extends Component {
   };
   componentWillMount() {
     this.clock();
-    this.daytime();
     this.weather();
 
     setInterval(this.clock, 1000);
     setInterval(this.daytime, 10000);
     setInterval(this.weather, 3600000);
   }
+  //cleanup, make one call to setState
+  //have am/pm?
   clock = () => {
     this.setState({
       date: new Date(),
@@ -45,6 +44,16 @@ class App extends Component {
     });
     var d = this.state.date,
       hours = d.getHours();
+      if (d.getHours() >= 5 && d.getHours() < 12) {
+        //morning
+        this.setState({ timeOfDay: 0 });
+      } else if (d.getHours() >= 12 && d.getHours() <= 18) {
+        //afternoon
+        this.setState({ timeOfDay: 1 });
+      } else {
+        //evening
+        this.setState({ timeOfDay: 2 });
+      }
     if (hours > 12) hours -= 12;
     this.setState({
       time: {
@@ -59,19 +68,6 @@ class App extends Component {
             : d.getSeconds()
       }
     });
-  };
-  daytime = () => {
-    var d = this.state.date;
-    if (d.getHours() >= 5 && d.getHours() <= 12) {
-      //morning
-      this.setState({ timeOfDay: 0 });
-    } else if (d.getHours() >= 12 && d.getHours() <= 18) {
-      //afternoon
-      this.setState({ timeOfDay: 1 });
-    } else {
-      //evening
-      this.setState({ timeOfDay: 2 });
-    }
   };
   weather = () => {
     axios
@@ -105,11 +101,9 @@ class App extends Component {
   render() {
     if (this.state.weatherIn) {
       return (
-        <div>
+        <div className="app">
           <Clock
-            hours={this.state.time.hours}
-            minutes={this.state.time.minutes}
-            seconds={this.state.time.seconds}
+            time={this.state.time}
           />
           <Greeting timeOfDay={this.state.timeOfDay} />
           <Day date={this.state.date} />
@@ -122,11 +116,9 @@ class App extends Component {
       );
     }
     return (
-      <div>
+      <div className="app">
         <Clock
-          hours={this.state.time.hours}
-          minutes={this.state.time.minutes}
-          seconds={this.state.time.seconds}
+          time={this.state.time}
         />
         <Greeting timeOfDay={this.state.timeOfDay} />
         <Day date={this.state.date} />

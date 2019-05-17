@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 //props: key, day, weather
+//set alt to descriptive text from weather obj
 class ForecastItem extends Component {
   render() {
     return (
-      <div>
-        {this.props.day} {this.props.weather.icon}
+      <div className="forecast__item">
+        <img className="item__icon" src={"img/path" + this.props.weather.icon} alt=""/>
+        <span className="item__day">{this.props.day}</span>
       </div>
     );
   }

@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import ForecastItem from "./ForecastItem.js";
 //5 day forecast
-//put state update logic in its own function
-
+//put state update logic into its own function?
 class Forecast extends Component {
   state = {
     data: {}
@@ -22,7 +21,6 @@ class Forecast extends Component {
       })
     });
   }
-
   componentDidUpdate(prevProps) {
     if (prevProps.weather !== this.props.weather) {
       var date = [],
@@ -42,9 +40,8 @@ class Forecast extends Component {
   }
   render() {
     //ignore first day?
-    //make a map
     return (
-      <div>
+      <div className="forecast">
         {this.state.data.map((item, i) => <ForecastItem key={i} day={item.date} weather={item.weather}/>)}
       </div>
     )

@@ -1,4 +1,11 @@
 .forecast{
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  width: 40%;
+  margin: auto;
+  border: 1px solid black;
+}
+.forecast__item{
+  
 }

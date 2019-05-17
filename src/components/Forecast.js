@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ForecastItem from "./ForecastItem.js";
+import "../css/Forecast.css";
 //5 day forecast
 //put state update logic into its own function?
 class Forecast extends Component {

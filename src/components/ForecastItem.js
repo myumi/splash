@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "../css/Forecast.css";
 //props: key, day, weather
 //set alt to descriptive text from weather obj
 class ForecastItem extends Component {

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+//change to props?
 class Day extends Component {
   state = {
     day: "",
@@ -47,7 +47,7 @@ class Day extends Component {
   };
   render() {
     return (
-      <div>
+      <div className="day">
         {this.state.month} {this.state.day} {this.state.year}{" "}
         {this.state.dayName}
       </div>

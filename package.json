@@ -1,6 +1,7 @@
 {
   "name": "splash",
   "version": "0.1.0",
+  "author": "Myumi Kalinowski",
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",

@@ -1,5 +1,7 @@
 import React, { Component } from "react";
+import "../css/Day.css";
 //change to props?
+//have componentDidUpdate
 class Day extends Component {
   state = {
     day: "",
@@ -9,7 +11,11 @@ class Day extends Component {
   };
   componentWillMount() {
     this.date();
-    setInterval(this.date, 1800000);
+  }
+  componentDidUpdate(prevProps) {
+    if(prevProps.date !== this.props.date){
+      this.date();
+    }
   }
   date = () => {
     const days = {
@@ -35,7 +41,7 @@ class Day extends Component {
       10: "Nov",
       11: "Dec",
     }
-    var d = new Date();
+    const d = this.props.date;
     this.setState({
       day: d.getDate().toString().length < 2
         ? "0" + d.getDate()
@@ -48,8 +54,7 @@ class Day extends Component {
   render() {
     return (
       <div className="day">
-        {this.state.month} {this.state.day} {this.state.year}{" "}
-        {this.state.dayName}
+        {this.state.month}, {this.state.day} {this.state.year}
       </div>
     );
   }

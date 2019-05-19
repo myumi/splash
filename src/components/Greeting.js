@@ -4,8 +4,6 @@ import React, { Component } from "react";
 class Greeting extends Component {
   state = {
     name: "X",
-    message: "",
-    timeOfDay: "",
     messages: {
       0: ["Good morning,"],
       1: ["Good afternoon,"],
@@ -13,28 +11,27 @@ class Greeting extends Component {
     }
   };
   componentDidMount() {
-    this.setState({
-      timeOfDay: this.props.timeOfDay,
-      message: this.state.messages[this.props.timeOfDay][
-        Math.floor(
-          Math.random() * this.state.messages[this.props.timeOfDay].length
-        )
-      ]
-    });
+    // this.setState({
+    //   message: this.state.messages[this.props.timeOfDay][
+    //     Math.floor(
+    //       Math.random() * this.state.messages[this.props.timeOfDay].length
+    //     )
+    //   ]
+    // });
   }
   componentDidUpdate(prevProps) {
-    if (prevProps.timeOfDay !== this.props.timeOfDay) {
-      this.setState({
-        timeOfDay: this.props.timeOfDay,
-        message: this.state.messages[
-          this.state.timeOfDay[
-            Math.floor(
-              Math.random() * this.state.messages[this.state.timeOfDay].length
-            )
-          ]
-        ]
-      });
-    }
+    // if (prevProps.timeOfDay !== this.props.timeOfDay) {
+    //   this.setState({
+    //     timeOfDay: this.props.timeOfDay,
+    //     message: this.state.messages[
+    //       this.state.timeOfDay[
+    //         Math.floor(
+    //           Math.random() * this.state.messages[this.state.timeOfDay].length
+    //         )
+    //       ]
+    //     ]
+    //   });
+    // }
   }
   render() {
     return (

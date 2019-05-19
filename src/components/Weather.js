@@ -13,7 +13,7 @@ class Weather extends Component {
           alt=""
         />
         <div className="weather__text">
-          <span className="weather__temp">{this.props.today.temp}°</span>
+          <span className="weather__temp">{this.props.today.temp}°F</span>
           <span className="weather__humidity">{this.props.today.humidity}%</span>
         </div>
       </div>

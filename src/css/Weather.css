@@ -1,17 +1,17 @@
 .weather{
-  width: 10rem;
-  height: 6rem;
-  border: 1px solid black;
+  width: 14rem;
+  height: 8rem;
   position: absolute;
   right: 8px;
   top: 0px;
   display: flex;
   flex-direction: row;
-  margin: 2rem;
+  margin-top: 5rem;
+  margin-right: 2rem;
 }
 .weather__icon{
   width: 60%;
-  border: 1px solid black;
+  border: 1px solid white;
 }
 .weather__text{
   display: flex;
@@ -19,4 +19,5 @@
   justify-content: flex-start;
   align-items: baseline;
   padding-left: 5%;
+  font-size: 2rem;
 }

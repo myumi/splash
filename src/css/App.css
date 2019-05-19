@@ -1,6 +1,7 @@
 .app {
   font-family: "Source Sans Pro";
-  /* color: #C7C7C7; */
+  color: #f7f6f6;
   text-align: center;
+  font-weight: bold;
 }
 /* have color change with background for readability? */

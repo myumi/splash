@@ -1,3 +1,10 @@
 .day {
-  
+  font-size: 2rem;
+  position: absolute;
+  left: 8px;
+  top: 0px;
+  width: 200px;
+  text-align: left;
+  margin-top: 5rem;
+  margin-left: 2rem;
 }

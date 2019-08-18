@@ -12,12 +12,8 @@ import Forecast from "./Forecast.js";
 class App extends Component {
   state = {
     date: new Date(),
-    day: new Date().getDay(),
-    time: {
-      hours: "",
-      minutes: "",
-      seconds: "",
-    },
+    day: '',
+    time: '',
     forecast: [
       { temp: "", weather: "", humidity: "" },
       { temp: "", weather: "", humidity: "" },
@@ -29,28 +25,24 @@ class App extends Component {
     country: "US",
     key: process.env.REACT_APP_OPENWEATHERAPI
   };
-  componentWillMount() {
+
+  componentDidMount() {
     this.clock();
     this.weather();
 
     setInterval(this.clock, 1000);
     setInterval(this.weather, 3600000);
   }
+
   clock = () => {
-    const d = new Date(),
-      hours = d.getHours(),
-      minutes = d.getMinutes(),
-      seconds = d.getSeconds();
+    const d = new Date()
     this.setState({
       date: d,
-      day: d.getDay(),
-      time: {
-        hours: hours.toString().length < 2 ? "0" + hours : hours,
-        minutes: minutes.toString().length < 2 ? "0" + minutes : minutes,
-        seconds: seconds.toString().length < 2 ? "0" + seconds : seconds,
-      }
+      day: d.toLocaleDateString(),
+      time: d.toLocaleTimeString()
     });
   };
+
   weather = () => {
     axios
       .get("https://api.openweathermap.org/data/2.5/forecast/daily", {
@@ -76,13 +68,14 @@ class App extends Component {
         throw new Error("Cannot retrieve data from OpenWeatherMap");
       });
   };
+
   render() {
     if (this.state.forecast[0].temp) {
       return (
         <div className="app">
           <Clock time={this.state.time} />
-          <Forecast weather={this.state.forecast} today={this.state.day} />
-          <Day date={this.state.date} />
+          <Forecast weather={this.state.forecast} today={this.state.date} />
+          <Day day={this.state.day} />
           <Weather today={this.state.forecast[0]} />
         </div>
       );

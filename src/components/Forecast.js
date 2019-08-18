@@ -7,10 +7,22 @@ class Forecast extends Component {
   state = {
     data: {}
   };
+
   componentWillMount() {
-    var date = [],
-      today = this.props.today;
-    for (var i = 1; i <= 5; i++) {
+    this.setData(this.props.today.getDay(), this.props.weather)
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.weather !== this.props.weather) {
+      this.setData(this.props.today.getDay(), this.props.weather)
+    }
+  }
+
+  setData = (day, forecast) => {
+    //finds all the days following the current one
+    let date = [],
+      today = day;
+    for (let i = 1; i <= 5; i++) {
       date[i] = today + i > 6 ? today + i - 7 : today + i;
     }
     this.setState({
@@ -22,23 +34,7 @@ class Forecast extends Component {
       })
     });
   }
-  componentDidUpdate(prevProps) {
-    if (prevProps.weather !== this.props.weather) {
-      var date = [],
-        today = this.props.today;
-      for (var i = 1; i <= 5; i++) {
-        date[i] = today + i > 6 ? today + i - 7 : today + i;
-      }
-      this.setState({
-        data: date.map((item, i) => {
-          return {
-            date: date[i],
-            weather: this.props.weather[i]
-          };
-        })
-      });
-    }
-  }
+
   render() {
     //ignore first day?
     return (

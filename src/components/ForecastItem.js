@@ -14,9 +14,9 @@ class ForecastItem extends Component {
       6: "Sat"
     };
     return (
-      <div className="forecast__item">
-        <img className="item__icon" src={"img/path" + this.props.weather.icon} alt=""/>
-        <span className="item__day">{days[this.props.day].toUpperCase()}</span>
+      <div className="forecast-item">
+        <img className="item-icon" src={"weather-icons/weathericons/" + this.props.weather.icon + ".svg"} alt="weather icon"/>
+        <span className="item-day">{days[this.props.day].toUpperCase()}</span>
       </div>
     );
   }

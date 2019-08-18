@@ -9,11 +9,11 @@
   margin-top: 5rem;
   margin-right: 2rem;
 }
-.weather__icon{
-  width: 60%;
+.weather-icon{
+  width: 60vw;
   border: 1px solid white;
 }
-.weather__text{
+.weather-text{
   display: flex;
   flex-direction: column;
   justify-content: flex-start;

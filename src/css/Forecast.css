@@ -5,15 +5,15 @@
   width: 40%;
   margin: auto;
 }
-.forecast__item{
+.forecast-item{
   display: flex;
   flex-direction: column;
 }
-.item__icon{
+.item-icon{
   height: 4rem;
   width: 4rem;
   border: 1px solid white;
 }
-.item__text{
+.item-text{
 
 }

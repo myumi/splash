@@ -38,8 +38,17 @@ class App extends Component {
     const d = new Date()
     this.setState({
       date: d,
-      day: d.toLocaleDateString(),
-      time: d.toLocaleTimeString()
+      day: d.toLocaleString('default', {
+        weekday: 'long',
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric'
+      }),
+      time: d.toLocaleString('default', {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+      })
     });
   };
 

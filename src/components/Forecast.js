@@ -8,6 +8,7 @@ class Forecast extends Component {
     data: {}
   };
 
+//use hooks ???
   componentWillMount() {
     this.setData(this.props.today.getDay(), this.props.weather)
   }

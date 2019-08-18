@@ -18,11 +18,10 @@ class Clock extends Component {
   //toLocaleString zero padding is broken for time!!!!! since 2015!!!!!! AHHHHH
   padTime = (time) => {
     let padding = time.split(":")
-    padding.forEach((item) => {
+    padding.forEach((item, index) => {
       if(item.length === 1){
-        return "0" + item
+        padding[index] = "0" + item
       }
-      return item
     })
     return padding.join(":")
   }

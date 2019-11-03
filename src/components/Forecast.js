@@ -5,10 +5,21 @@ import "../css/Forecast.css";
 //put state update logic into its own function?
 class Forecast extends Component {
   state = {
-    data: {}
+    data: [{
+      day: '',
+      weather: ''
+    }]
   };
 
-//use hooks ???
+  // constructor(props) {
+  //   super(props);
+  //   // Don't call this.setState() here!
+  //   // this.setData(this.props.today.getDay(), this.props.weather)
+  //   state = {
+  //
+  //   }
+  // }
+
   componentWillMount() {
     this.setData(this.props.today.getDay(), this.props.weather)
   }

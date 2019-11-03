@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "../css/Weather.css";
-//weather for day
+//weather for day in corner of screen
 //props: today{temp, icon, humidity}
 //set alt to descriptive text from weather obj
 class Weather extends Component {

@@ -13,6 +13,7 @@ class ForecastItem extends Component {
       5: "Fri",
       6: "Sat"
     };
+    
     return (
       <div className="forecast-item">
         <img className="item-icon" src={"weather-icons/weathericons/" + this.props.weather.icon + ".svg"} alt="weather icon"/>

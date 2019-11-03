@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "../css/Clock.css";
-//props: time{hours,minutes,seconds}
-//set hours & period
+//props: time string
 class Clock extends Component {
   state = {
     time: this.props.time,
@@ -11,6 +10,7 @@ class Clock extends Component {
     if (prevProps.time !== this.props.time) {
       this.setState({
         time: this.padTime(this.props.time)
+        // time: this.props.time
       });
     }
   }

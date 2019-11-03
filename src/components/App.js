@@ -35,7 +35,7 @@ class App extends Component {
   }
 
   clock = () => {
-    const d = new Date()
+    const d = new Date();
     this.setState({
       date: d,
       day: d.toLocaleString('default', {
@@ -44,7 +44,7 @@ class App extends Component {
         day: 'numeric',
         year: 'numeric'
       }),
-      time: d.toLocaleString('default', {
+      time: d.toLocaleTimeString('default', {
         hour: '2-digit',
         minute: '2-digit',
         second: '2-digit',
@@ -74,7 +74,7 @@ class App extends Component {
         });
       })
       .catch(error => {
-        throw new Error("Cannot retrieve data from OpenWeatherMap");
+        throw new Error(error, "Cannot retrieve data from OpenWeatherMap");
       });
   };
 

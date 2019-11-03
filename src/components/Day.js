@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "../css/Day.css";
-//change to props?
-//have componentDidUpdate
+//props day of week string
 class Day extends Component {
   state = {
     day: this.props.day,

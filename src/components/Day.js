@@ -18,6 +18,7 @@ class Day extends Component {
     return (
       <div className="day">
         {this.state.day}
+        <p>Hello!</p>
       </div>
     );
   }

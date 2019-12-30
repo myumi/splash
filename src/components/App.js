@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import axios from "axios";
 import "../css/App.css";
 import Clock from "./Clock.js";
 import Day from "./Day.js";
@@ -53,7 +52,7 @@ class App extends Component {
   };
 
   weather = () => {
-    axios
+    fetch
       .get("https://api.openweathermap.org/data/2.5/forecast/daily", {
         params: {
           zip: this.state.city + "," + this.state.country,
@@ -62,6 +61,7 @@ class App extends Component {
           APPID: this.state.key
         }
       })
+      .then(response => response.json())
       .then(response => {
         this.setState({
           forecast: response.data.list.map(item => {

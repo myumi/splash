@@ -1,4 +1,18 @@
 .clock{
-  margin-top: 30rem;
-  font-size: 5rem;
+  flex-basis: 100%;
+  padding-top: 20vh;
+  font-size: 3rem;
 }
+
+@media (min-width: 768px) { /* tablets */
+  .clock{
+    padding-top: 35vh;
+    font-size: 5rem;
+  }
+}
+@media (min-width: 992px) { /* desktop */
+  .clock{
+    padding-top: 38vh;
+    font-size: 5rem;
+  }
+ }

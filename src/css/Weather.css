@@ -1,23 +1,33 @@
 .weather{
-  width: 14rem;
-  height: 8rem;
-  position: absolute;
-  right: 8px;
-  top: 0px;
   display: flex;
+  flex-basis: 50%;
   flex-direction: row;
-  margin-top: 5rem;
-  margin-right: 2rem;
+  font-size: 1.4rem;
+  justify-content: flex-end;
 }
 .weather-icon{
-  width: 60vw;
   border: 1px solid white;
+  height: 100px;
+  width: 100px;
 }
 .weather-text{
+  align-items: baseline;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: baseline;
-  padding-left: 5%;
-  font-size: 2rem;
+  padding: 0 0 0 5%;
 }
+@media (min-width: 768px) { /* tablets */
+  .weather{
+    font-size: 2rem;
+  }
+}
+@media (min-width: 992px) { /* desktop */
+  .weather{
+    padding: 1rem 3% 0 0;
+  }
+  .weather-icon{
+    width: 200px;
+    height: 200px;
+  }
+ }

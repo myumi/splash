@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import ForecastItem from "./ForecastItem.js";
-import "../css/Forecast.css";
+import React from 'react';
+import ForecastItem from './ForecastItem';
+import '../css/Forecast.css';
 //5 day forecast
 //put state update logic into its own function?
-class Forecast extends Component {
+class Forecast extends React.Component {
   state = {
     data: [{
       day: '',
@@ -50,7 +50,7 @@ class Forecast extends Component {
   render() {
     //ignore first day?
     return (
-      <div className="forecast">
+      <div className='forecast'>
         {this.state.data.map((item, i) => <ForecastItem key={i} day={item.date} weather={item.weather}/>)}
       </div>
     )

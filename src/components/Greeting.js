@@ -1,13 +1,13 @@
-import React, { Component } from "react";
+import React from 'react';
 //integrate facial recognition?
 //put state update logic into its own function?
-class Greeting extends Component {
+class Greeting extends React.Component {
   state = {
-    name: "X",
+    name: 'X',
     messages: {
-      0: ["Good morning,"],
-      1: ["Good afternoon,"],
-      2: ["Good evening,"]
+      0: ['Good morning,'],
+      1: ['Good afternoon,'],
+      2: ['Good evening,']
     }
   };
   componentDidMount() {
@@ -35,7 +35,7 @@ class Greeting extends Component {
   }
   render() {
     return (
-      <div className="greeting">
+      <div className='greeting'>
         {this.state.message} {this.state.name}
       </div>
     );

@@ -1,27 +1,28 @@
-import React, { Component } from "react";
-import "../css/App.css";
-import Clock from "./Clock.js";
-import Day from "./Day.js";
-// import Greeting from "./Greeting.js";
-import Weather from "./Weather.js";
-import Forecast from "./Forecast.js";
+import React from 'react';
+import axios from 'axios'
+import '../css/App.css';
+import Clock from './Clock';
+import Day from './Day';
+// import Greeting from './Greeting.js';
+import Weather from './Weather';
+import Forecast from './Forecast';
 
 //change background for day, afternoon, night?
 //rainy or not?
-class App extends Component {
+class App extends React.Component {
   state = {
     date: new Date(),
     day: '',
     time: '',
     forecast: [
-      { temp: "", weather: "", humidity: "" },
-      { temp: "", weather: "", humidity: "" },
-      { temp: "", weather: "", humidity: "" },
-      { temp: "", weather: "", humidity: "" },
-      { temp: "", weather: "", humidity: "" }
+      { temp: '', weather: '', humidity: '' },
+      { temp: '', weather: '', humidity: '' },
+      { temp: '', weather: '', humidity: '' },
+      { temp: '', weather: '', humidity: '' },
+      { temp: '', weather: '', humidity: '' }
     ],
-    city: "07874",
-    country: "US",
+    city: '07874',
+    country: 'US',
     key: process.env.REACT_APP_OPENWEATHERAPI
   };
 
@@ -52,19 +53,17 @@ class App extends Component {
   };
 
   weather = () => {
-    fetch
-      .get("https://api.openweathermap.org/data/2.5/forecast/daily", {
+    axios.get('https://api.openweathermap.org/data/2.5/forecast/daily', {
         params: {
-          zip: this.state.city + "," + this.state.country,
+          zip: this.state.city + ',' + this.state.country,
           cnt: 6,
-          units: "imperial",
+          units: 'imperial',
           APPID: this.state.key
         }
       })
-      .then(response => response.json())
-      .then(response => {
+      .then(res => {
         this.setState({
-          forecast: response.data.list.map(item => {
+          forecast: res.data.list.map(item => {
             return {
               temp: item.temp.day,
               icon: item.weather[0].icon,
@@ -73,26 +72,26 @@ class App extends Component {
           })
         });
       })
-      .catch(error => {
-        throw new Error(error, "Cannot retrieve data from OpenWeatherMap");
+      .catch(err=> {
+        throw new Error(err, 'Cannot retrieve data from OpenWeatherMap');
       });
   };
 
   render() {
     if (this.state.forecast[0].temp) {
       return (
-        <div className="app">
-          <Clock time={this.state.time} />
-          <Forecast weather={this.state.forecast} today={this.state.date} />
+        <div className='app'>
           <Day day={this.state.day} />
           <Weather today={this.state.forecast[0]} />
+          <Clock time={this.state.time} />
+          <Forecast weather={this.state.forecast} today={this.state.date} />
         </div>
       );
     }
     return (
-      <div className="app">
-        <Clock time={this.state.time} />
+      <div className='app'>
         <Day date={this.state.date} />
+        <Clock time={this.state.time} />
         Loading Weather...
       </div>
     );

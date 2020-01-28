@@ -1,12 +1,18 @@
+*{
+  box-sizing: border-box;
+}
 html{
-  margin: 0;
   height: 100%;
+  margin: 0;
   background-image: url("../bgs/1.jpg");
   background-size: cover;
+  overflow: hidden;
+  white-space: nowrap;
 }
 body {
   margin: 0;
   padding: 0;
+  width: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

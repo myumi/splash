@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import "../css/Day.css";
+import React from 'react';
+import '../css/Day.css';
 //props day of week string
-class Day extends Component {
+class Day extends React.Component {
   state = {
     day: this.props.day,
   };
@@ -16,8 +16,8 @@ class Day extends Component {
 
   render() {
     return (
-      <div className="day">
-        {this.state.day}
+      <div className='day'>
+        <p>{this.state.day}</p>
         <p>Hello!</p>
       </div>
     );

@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import "../css/Clock.css";
+import React from 'react';
+import '../css/Clock.css';
 //props: time string
-class Clock extends Component {
+class Clock extends React.Component {
   state = {
     time: this.props.time,
   };
@@ -17,18 +17,18 @@ class Clock extends Component {
 
   //toLocaleString zero padding is broken for time!!!!! since 2015!!!!!! AHHHHH
   padTime = (time) => {
-    let padding = time.split(":")
+    let padding = time.split(':')
     padding.forEach((item, index) => {
       if(item.length === 1){
-        padding[index] = "0" + item
+        padding[index] = '0' + item
       }
     })
-    return padding.join(":")
+    return padding.join(':')
   }
 
   render() {
     return (
-      <div className="clock">
+      <div className='clock'>
         {this.state.time}
       </div>
     );

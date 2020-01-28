@@ -4,6 +4,8 @@
   flex-direction: row;
   font-size: 1.4rem;
   justify-content: flex-end;
+  padding: 1rem 3% 0 0;
+  max-width: 50%;
 }
 .weather-icon{
   border: 1px solid white;
@@ -19,12 +21,17 @@
 }
 @media (min-width: 768px) { /* tablets */
   .weather{
-    font-size: 2rem;
+    font-size: 1.7rem;
+  }
+  .weather-icon{
+    border: 1px solid white;
+    height: 150px;
+    width: 150px;
   }
 }
 @media (min-width: 992px) { /* desktop */
   .weather{
-    padding: 1rem 3% 0 0;
+    font-size: 2rem;
   }
   .weather-icon{
     width: 200px;

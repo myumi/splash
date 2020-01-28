@@ -6,7 +6,7 @@
 
 @media (min-width: 768px) { /* tablets */
   .clock{
-    padding-top: 35vh;
+    padding-top: 40vh;
     font-size: 5rem;
   }
 }

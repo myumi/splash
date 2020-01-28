@@ -2,8 +2,8 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 40%;
-  margin: auto;
+  width: 100%;
+  padding: 0 20% 0 20%;
 }
 .forecast-item{
   display: flex;
@@ -14,6 +14,9 @@
   width: 4rem;
   border: 1px solid white;
 }
-.item-text{
 
+@media (min-width: 992px) { /* desktop */
+  .forecast{
+    padding: 0 30% 0 30%;
+  }
 }
